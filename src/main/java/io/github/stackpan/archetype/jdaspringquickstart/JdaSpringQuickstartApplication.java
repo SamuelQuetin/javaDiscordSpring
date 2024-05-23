@@ -1,8 +1,10 @@
 package io.github.stackpan.archetype.jdaspringquickstart;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+
 
 @SpringBootApplication
 @ConfigurationPropertiesScan("io.github.stackpan.archetype.jdaspringquickstart.configuration.properties")

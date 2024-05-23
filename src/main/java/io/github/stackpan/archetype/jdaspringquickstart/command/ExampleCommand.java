@@ -19,5 +19,4 @@ public class ExampleCommand extends ApplicationCommand {
         var message = exampleService.pong();
         event.reply(message).queue();
     }
-
 }
