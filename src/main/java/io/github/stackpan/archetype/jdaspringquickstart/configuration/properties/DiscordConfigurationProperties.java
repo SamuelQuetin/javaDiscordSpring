@@ -3,5 +3,5 @@ package io.github.stackpan.archetype.jdaspringquickstart.configuration.propertie
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "discord")
-public record DiscordConfigurationProperties(String botToken) {
+public record DiscordConfigurationProperties(String botToken,String guildId, String channelId) {
 }
