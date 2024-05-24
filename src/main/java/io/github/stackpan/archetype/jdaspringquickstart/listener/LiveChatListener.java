@@ -1,7 +1,6 @@
 package io.github.stackpan.archetype.jdaspringquickstart.listener;
 
 import io.github.stackpan.archetype.jdaspringquickstart.service.LiveChatService;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import net.dv8tion.jda.api.entities.Guild;
