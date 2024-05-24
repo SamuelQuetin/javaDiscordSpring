@@ -1,3 +1,9 @@
+# LiveChatBot
+Le but du bot est de recuperer la derniere image d'un channel discord et de donner les moyens de recuperer cette image à l'aide d'une API integré.
+(Inspiré du LiveChat de la **CacaBox**)
+
+En cours de Développement... Je suis pas très rapide.
+
 # JDA Spring Quickstart Maven Archetype
 
 Starter project for building JDA Discord bot app with Spring
