@@ -16,18 +16,19 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @RequiredArgsConstructor
+@ComponentScan("io.github.stackpan.archetype.jdaspringquickstart.listener")
 public class DiscordConfigurer {
 
     private final DiscordConfigurationProperties discordConfigurationProperties;
 
     private final ExtensionRegister extensionRegister;
 
+    private final LiveChatListener liveChatListener;
 
     @Bean
     public JDA jda() throws InterruptedException {
         JDA jda =  JDABuilder
                 .createDefault(discordConfigurationProperties.botToken())
-                .addEventListeners(new LiveChatListener(discordConfigurationProperties.guildId(), discordConfigurationProperties.channelId()))
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .setActivity(Activity.watching("en train de se construire"))
                 .build();
@@ -36,6 +37,8 @@ public class DiscordConfigurer {
         CommandsBuilder.newBuilder()
                 .extensionsBuilder(extensionRegister) // Don't remove this! This is necessary for registering your beans
                 .build(jda, "io.github.stackpan.archetype.jdaspringquickstart.command");
+
+        jda.addEventListener(liveChatListener);
 
         return jda;
     }

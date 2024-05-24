@@ -1,7 +1,7 @@
 package io.github.stackpan.archetype.jdaspringquickstart.discord;
 
 import com.freya02.botcommands.api.builder.ExtensionsBuilder;
-import io.github.stackpan.archetype.jdaspringquickstart.service.ExampleService;
+import io.github.stackpan.archetype.jdaspringquickstart.service.LiveChatService;
 import lombok.Setter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -23,6 +23,6 @@ public class ExtensionRegister implements Consumer<ExtensionsBuilder>, Applicati
     @Override
     public void accept(ExtensionsBuilder extensionsBuilder) {
         extensionsBuilder
-                .registerConstructorParameter(ExampleService.class, t -> applicationContext.getBean(ExampleService.class));
+                .registerConstructorParameter(LiveChatService.class, t -> applicationContext.getBean(LiveChatService.class));
     }
 }

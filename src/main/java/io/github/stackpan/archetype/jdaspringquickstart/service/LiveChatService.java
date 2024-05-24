@@ -5,8 +5,7 @@ import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 @Service
-@Getter
-@Setter
+@Getter @Setter
 public class LiveChatService {
     private String imageUrl;
 }

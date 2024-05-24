@@ -5,18 +5,18 @@ import com.freya02.botcommands.api.application.ApplicationCommand;
 import com.freya02.botcommands.api.application.CommandScope;
 import com.freya02.botcommands.api.application.slash.GlobalSlashEvent;
 import com.freya02.botcommands.api.application.slash.annotations.JDASlashCommand;
-import io.github.stackpan.archetype.jdaspringquickstart.service.ExampleService;
+import io.github.stackpan.archetype.jdaspringquickstart.service.LiveChatService;
 import lombok.RequiredArgsConstructor;
 
 @CommandMarker
 @RequiredArgsConstructor
 public class ExampleCommand extends ApplicationCommand {
 
-    private final ExampleService exampleService;
+    private final LiveChatService exampleService;
 
     @JDASlashCommand(name = "ping", scope = CommandScope.GLOBAL)
     public void ping(GlobalSlashEvent event) {
-        var message = exampleService.pong();
+        var message = exampleService.getImageUrl();
         event.reply(message).queue();
     }
 }
