@@ -16,7 +16,10 @@ public class ExampleCommand extends ApplicationCommand {
 
     @JDASlashCommand(name = "ping", scope = CommandScope.GLOBAL)
     public void ping(GlobalSlashEvent event) {
-        var message = exampleService.getImageUrl();
+        String message = exampleService.getImageUrl();
+        if(message == null){
+            message = "Aucune url engregistré";
+        }
         event.reply(message).queue();
     }
 }

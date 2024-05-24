@@ -30,7 +30,6 @@ public class LiveChatListener extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        System.out.println("reci");
         Message message = event.getMessage();
         Guild guild = event.getGuild();
         TextChannel channel = (TextChannel) event.getChannel();
