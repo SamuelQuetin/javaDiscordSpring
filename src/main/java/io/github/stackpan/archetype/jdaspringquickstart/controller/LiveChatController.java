@@ -1,5 +1,6 @@
 package io.github.stackpan.archetype.jdaspringquickstart.controller;
 
+import io.github.stackpan.archetype.jdaspringquickstart.dto.ResponseDto;
 import io.github.stackpan.archetype.jdaspringquickstart.service.LiveChatService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class LiveChatController {
     private LiveChatService liveChatService;
 
     @GetMapping(value = "/lastImage")
-    public String getLastImage(){
-        return liveChatService.getImageUrl();
+    public ResponseDto getLastImage(){
+        return liveChatService.getResponseDto();
     }
 }

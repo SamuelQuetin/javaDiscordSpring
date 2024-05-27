@@ -37,12 +37,16 @@ public class LiveChatListener extends ListenerAdapter {
             if(!message.getAttachments().isEmpty()) {
                 for (Message.Attachment attachment : message.getAttachments()) {
                     if (attachment.isImage()) {
+                        liveChatService.setId(message.getId());
                         liveChatService.setImageUrl(attachment.getUrl());
+                        liveChatService.setUserId(message.getAuthor().getId());
                         channel.sendMessage("Image envoyé").queue();
                     }
                 }
-            } else if(message.getContentDisplay().contains("image.png") && message.getContentDisplay().contains("https://cdn.discordapp.com/attachments/")){
+            } else if((message.getContentDisplay().contains(".png") || message.getContentDisplay().contains(".gif")) && message.getContentDisplay().contains("https://cdn.discordapp.com/attachments/")){
+                liveChatService.setId(message.getId());
                 liveChatService.setImageUrl(message.getContentDisplay());
+                liveChatService.setUserId(message.getAuthor().getId());
                 channel.sendMessage("Image envoyé").queue();
             }
         }
