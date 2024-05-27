@@ -32,6 +32,7 @@ public class LiveChatListener extends ListenerAdapter {
         Message message = event.getMessage();
         Guild guild = event.getGuild();
         TextChannel channel = (TextChannel) event.getChannel();
+
         if(guild.getId().equals(targetGuildId) && channel.getId().equals(targetChannelId) && !event.getAuthor().isBot()) {
             System.out.println("Message received in target channel: " + message.getContentDisplay());
             if(!message.getAttachments().isEmpty()) {
@@ -40,14 +41,22 @@ public class LiveChatListener extends ListenerAdapter {
                         liveChatService.setId(message.getId());
                         liveChatService.setImageUrl(attachment.getUrl());
                         liveChatService.setUserId(message.getAuthor().getId());
-                        channel.sendMessage("Image envoyé").queue();
+                        message.reply("OK").queue();
                     }
                 }
-            } else if((message.getContentDisplay().contains(".png") || message.getContentDisplay().contains(".gif")) && message.getContentDisplay().contains("https://cdn.discordapp.com/attachments/")){
+            } else if((message.getContentDisplay().contains(".png") || message.getContentDisplay().contains(".gif")) && message.getContentDisplay().contains("https://cdn.discordapp.com/attachments/") && message.getContentDisplay().contains("?ex=")){
                 liveChatService.setId(message.getId());
                 liveChatService.setImageUrl(message.getContentDisplay());
                 liveChatService.setUserId(message.getAuthor().getId());
-                channel.sendMessage("Image envoyé").queue();
+                message.reply("OK").queue();
+            } else if(message.getContentDisplay().contains("https://tenor.com/view/")){
+                liveChatService.setId(message.getId());
+                liveChatService.setImageUrl(message.getContentDisplay());
+                liveChatService.setUserId(message.getAuthor().getId());
+                message.reply("OK").queue();
+            }
+            else {
+                message.reply(" Pas d'image ou mauvais format").queue();
             }
         }
     }
